@@ -2,6 +2,8 @@
 
 Autism Spectrum Disorder (ASD) is a disorder known for having high levels of inter-group variation, otherwise known as heterogeneity. This has led to an active field of study investigating models that can make sense of heterogeneity in ASD. The ideal model allows us to observe what unites autistic people together as a group, while also indicating how they differ. This repository contains the code I used to study heterogeneity in ASD. Starting from the raw version of the ABIDE II dataset, I detail the creation of 5 datasets that make studying heterogeneity in ASD accessible to even students on an Introductory Machine Learning course. I then use these datasets to investigate heterogeneity in ASD by applying KMeans clustering to Structural MRI data from 367 Autistic and Allistic subjects and following that up with a post-hoc analysis of phenotypic (behavioural) data regarding the clusters found. My initial results show no evidence for clusters in ASD that possess a Neurobiological origin (An origin in the brain). However, with my easy-to-use datasets, further study still has the potential to suggest the existence of these clusters.
 
+(Check deliverables for a higher level overview of the project)
+
 # To participate
 There are a few steps before you can get involved.
 
