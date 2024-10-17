@@ -1,0 +1,57 @@
+#!/bin/bash
+
+#PBS -lwalltime=72:00:00
+#PBS -lselect=1:ncpus=256:mem=80gb
+#PBS -j oe
+#PBS -o hpc/run_eo_2_ABIDEII-SITE.txt
+
+# load module
+module load matlab/R2021a
+module load freesurfer/7.2.0
+module load afni/2015-02-23
+module load fsl/6.0.5
+module load anaconda3/personal
+
+cd /rds/general/user/jp2923/home/irp-jp2923
+source ~/.bashrc
+# activate env
+conda activate abide
+
+### set up env keywords
+SITE=ABIDEII-SITE
+
+export IRP_PROJ_DIR=/rds/general/user/jp2923/home/irp-jp2923
+export CCS_APP=/rds/general/user/jp2923/home/thesis_downloads/CCS
+export ABIDE_DIR=${IRP_PROJ_DIR}/data/abide_ii
+export BIDS_DIR=${ABIDE_DIR}/${SITE}
+export CCS_DIR=${ABIDE_DIR}/${SITE}/CCS
+export SUBJECTS_DIR=${ABIDE_DIR}/FreeSurfer
+
+#Handle potential Freesurfer undefined variable bug
+source $FREESURFER_HOME/SetUpFreeSurfer.sh
+export FREESURFER=$FREESURFER_HOME
+
+echo "=========VARIABLES========"
+echo $IRP_PROJ_DIR
+echo $CCS_APP
+echo $ABIDE_DIR
+echo $BIDS_DIR
+echo $CCS_DIR
+echo $SUBJECTS_DIR
+echo $SITE
+echo "=====VARIABLES END======="
+
+echo "Making directory..."
+# make ccs dirs
+mkdir ${ABIDE_DIR}/${SITE}/CCS
+echo "Directory made successfully!"
+
+echo "Converting from BIDS to CCS..."
+# convert data to ccs format
+python $CCS_APP/samplesScripts/ccs_pre_bids2ccs.py --BIDS_DIR $BIDS_DIR --CCS_DIR $CCS_DIR
+echo "Successfully converted from BIDS to CCS!"
+
+echo "Preprocessing..."
+# do the preprocessing
+python src/preprocess_modality_plel.py $SITE $ABIDE_DIR modality_of_choice
+echo "Finished preprocessing!"

@@ -1,0 +1,12 @@
+.ipynb_checkpoints/
+data/*
+*.tar.gz
+*.zip
+extras/abide1v2.md
+extras/advice from marijan plan.md
+extras/advice from ucl.txt
+extras/alternate ideas????
+extras/auto-anat.sh
+extras/papers/
+extras/preprocessing has been done for me?/
+tempCodeRunnerFile.py

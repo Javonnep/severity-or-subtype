@@ -1,0 +1,44 @@
+#!/bin/bash
+
+#PBS -lwalltime=00:01:00
+#PBS -lselect=1:ncpus=1:mem=1gb
+#PBS -j oe
+#PBS -o hpc/run_eo_1.txt
+
+# load module
+#module load anaconda3/personal
+
+cd /rds/general/user/jp2923/home/irp-jp2923
+
+echo "Current directory:"
+pwd
+echo "Contents of current directory:"
+ls -l
+python --version
+echo "============================================================================================================================================================================================================================"
+echo "------------1-------------"
+
+# update terminal
+source ~/.bashrc
+
+echo "-------------2------------"
+
+# activate env
+conda activate abide
+
+echo "------------3-------------"
+
+export ABIDE_DIR=/rds/general/user/jp2923/home/irp-jp2923/data/abide_ii
+
+echo "------------4-------------"
+
+
+#  organise the subjects
+python src/handle_subjects.py $ABIDE_DIR
+
+echo "------------5-------------"
+
+python src/handle_bids_format.py $ABIDE_DIR
+
+echo "-------------6------------"
+
