@@ -1,0 +1,117 @@
+I will be operationalising the extent to which an autistic subject is differnt to a non-autistic subject. 
+
+We are limited to our dataset, but in an ideal world we would be comparing all autistic/allistic subjects. Im going to call this the universal approximation principle.
+	This effects what fields we include. 
+
+I will include variables that are inherently 
+
+
+
+==standard numerical== every n-percent away from all = 1 point/z-score
+SRS_TOTAL_RAW: SRS Total Raw Score
+SRS_AWARENESS_RAW: SRS Social Awareness Total Raw Score
+SRS_COGNITION_RAW: SRS Social Cognition Total Raw Score
+SRS_COMMUNICATION_RAW: SRS Social Communication Total Raw Score
+SRS_MOTIVATION_RAW: SRS Social Motivation Total Raw Score
+SRS_MANNERISMS_RAW: SRS Autistic Mannerisms Total Raw Score
+SRS_TOTAL_T: SRS Total T Score
+SRS_AWARENESS_T: SRS Social Awareness Total T Score
+SRS_COGNITION_T: SRS Social Cognition T Score
+SRS_COMMUNICATION_T: SRS Social Communication T Score
+SRS_MOTIVATION_T: SRS Social Motivation T Score
+SRS_MANNERISMS_T: SRS Autistic Mannerisms T Score
+
+
+==n-ary inclusion== = 1 point
+
+CURRENT_MED_STATUS: Currently taking medications (within three months from scan)? (0=no, 1=yes)
+-
+HANDEDNESS_CATEGORY: Handedness Category (1=right handed, 2=left handed, 3=mixed handed)
+-
+
+==combine/special treatment??==
+
+-
+FIQ_TEST_TYPE: IQ Test Used for Full Scale IQ (e.g., DAS, KBITS-2, WAIS-III, WASI, etc.)
+FIQ: Full IQ Standard Score
+
+-
+
+
+
+===================================================================
+===================================================================
+===================================================================
+===================================================================
+===================================================================
+===================================================================
+===================================================================
+===================================================================
+===================================================================
+===================================================================
+===================================================================
+===================================================================
+===================================================================
+===================================================================
+===================================================================
+===================================================================
+===================================================================
+===================================================================
+
+
+==discard==
+-
+SRS_VERSION: SRS Version (1=child form, 2=adult form) | 
+[DOUBLE CHECK] There is no plausible reason to suggest that this field will has any influence over whether someone is more or less like a typical autisti person.
+-
+
+-
+AGE_AT_SCAN: Age at time of scan (years)
+[Consider combatting?] People of all ages can be autistic, thus because of the universal approximation principle, i will not be including this 
+-
+
+-
+SEX: Gender (1=male, 2=female)
+[Consider combatting?] SOURCE says that sex likely doesnt impact p(asd), thus because of the universal approximatiion principle, i will not include this.
+(biased sample misrepresents universal reality)
+-
+
+-
+SITE_ID: Identifier for the data collection site (not explicitly defined in the legend) | 
+Metadata should not go into the model. (But we will handle this with combat)
+-
+
+-
+SRS_INFORMANT: Who completed the SRS (e.g., 1=mother, 2=father, 3=both parents, etc.)
+There is no plausible reason to suggest that this field will has any influence over whether someone is more or less like a typical autisti person.
+-
+
+-
+SRS_EDITION: Social Responsiveness Scale Edition (1=SRS, 2=SRS-2)
+[check] There is no plausible reason to suggest that this field will has any influence over whether someone is more or less like a typical autisti person.
+-
+
+-
+SUB_ID: ABIDE II Unique ID Number for each subject |
+Metadata should not go into the model.
+-
+
+-
+DX_GROUP: Diagnostic Group (1=Autism, 2=Control) | 
+This is our label.
+-
+
+-
+EYE_STATUS_AT_SCAN: Eye Status During Rest Scan (1=open, 2=closed)
+[Consider combatting!] There is no plausible reason to suggest that this field will has any influence over whether someone is more or less like a typical autistic person.
+-
+-
+
+-
+CURRENT_MEDICATION_NAME: Active Ingredient of Current Medications
+drop the name in favour the boolean on_medication to capture the same variance.
+-
+
+
+
+
